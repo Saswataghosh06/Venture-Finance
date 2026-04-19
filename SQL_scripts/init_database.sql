@@ -1,0 +1,2 @@
+CREATE DATABASE FinTech_DWH;
+GO
