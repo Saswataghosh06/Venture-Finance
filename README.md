@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="500" height="112" alt="Image" src="https://github.com/user-attachments/assets/735d5caf-e061-4c7a-9477-1d7c5712bafb" />
+  <img width="500" height="112" alt="Image" src="https://github.com/user-attachments/assets/2f62a8ed-13fe-4931-acd8-c2a995d90c78" />
   <h1>Venture Finance</h1>
   <h3>Designing a Reliable Data System for Financial Decision-Making</h3>
   <p><strong>1M+ Transactions | 94K+ Customers | $3.15B Portfolio | Medallion Data Architecture</strong></p>
