@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="180px" src="docs/venture_logo.png" />
+  <img width="500" height="112" alt="Image" src="https://github.com/user-attachments/assets/735d5caf-e061-4c7a-9477-1d7c5712bafb" />
   <h1>Venture Finance</h1>
   <h3>Designing a Reliable Data System for Financial Decision-Making</h3>
   <p><strong>1M+ Transactions | 94K+ Customers | $3.15B Portfolio | Medallion Data Architecture</strong></p>
@@ -41,7 +41,7 @@ These issues created a situation where financial reporting could not be trusted.
 <h2>Dashboard Overview</h2>
 
 <div align="center">
-  <img width="900" src="YOUR_ISSUE_LINK_DASHBOARD" />
+  <img width="900" src="https://github.com/user-attachments/assets/cb6390d8-37c2-4fd3-a3bd-a3e0dd540c38" />
 </div>
 
 <p align="center">
