@@ -15,13 +15,14 @@ Venture Finance is a fast-scaling financial platform managing over
 </p>
 
 <p>
-As the system grew, the underlying data became unreliable. 
-Key financial fields were missing, customer records were duplicated, and merchant data was inconsistent.
+As the system scaled, data quality issues began affecting reporting accuracy. 
+Missing values, duplicate customers, and inconsistent merchant naming made it difficult 
+to trust key business metrics.
 </p>
 
 <p>
-This project rebuilds the entire data foundation into a structured system that produces 
-accurate, consistent, and decision-ready information.
+This project rebuilds the data system into a structured pipeline that produces reliable 
+and decision-ready information.
 </p>
 
 ---
@@ -29,199 +30,152 @@ accurate, consistent, and decision-ready information.
 <h2>Key Outcomes</h2>
 
 <ul>
-<li><strong>~$780M reporting risk eliminated</strong> by resolving 24.9% missing transaction values</li>
-<li><strong>5,000+ duplicate customer records unified</strong> into a single customer view</li>
-<li><strong>15+ inconsistent merchant variations standardized</strong> into clean entities</li>
-<li><strong>Reliable monthly revenue tracking enabled</strong> through controlled data modeling</li>
+<li><strong>$780M reporting risk eliminated</strong> by resolving 24.9% missing transaction values</li>
+<li><strong>5,000+ duplicate customer records unified</strong></li>
+<li><strong>15+ merchant name variations standardized</strong></li>
+<li><strong>Stable and reliable revenue tracking enabled</strong></li>
 </ul>
+
+---
+
+<h2>System Architecture</h2>
+
+<p>
+A layered data pipeline was implemented to progressively improve data quality.
+</p>
+
+<div align="center">
+  <img width="700" src="YOUR_ISSUE_LINK_MEDALLION_DIAGRAM" />
+</div>
+
+<p align="center">
+Medallion architecture showing Raw → Cleaned → Reporting layers
+</p>
 
 ---
 
 <h2>Business Problem</h2>
 
-<p>
-The original dataset contained several structural issues that made it unsuitable for analysis:
-</p>
-
 <ul>
 <li>Same merchant stored under multiple names</li>
-<li>Same customer stored multiple times with conflicting details</li>
-<li>Nearly 25% of transactions missing financial values</li>
-<li>Extreme transaction values distorting trends</li>
+<li>Duplicate customer records with conflicting attributes</li>
+<li>Nearly 25% missing transaction values</li>
+<li>Extreme values distorting analysis</li>
 </ul>
 
+---
+
+<h2>Data Cleaning Impact</h2>
+
+<h3>Merchant Standardization</h3>
+
 <p>
-These issues created gaps between reported numbers and actual business performance.
+Merchant data was fragmented across multiple naming formats. 
+After cleaning, these were unified into consistent entities.
+</p>
+
+<div align="center">
+  <img width="700" src="YOUR_ISSUE_LINK_MERCHANT_LEADERBOARD" />
+</div>
+
+<p align="center">
+Top merchants after standardization showing true revenue contribution
 </p>
 
 ---
 
-<h2>Data Scope</h2>
+<h3>Customer Deduplication</h3>
+
+<p>
+Duplicate customer records were merged into a single consistent view, 
+improving accuracy in customer-level analysis and reducing redundant communication.
+</p>
+
+---
+
+<h3>Handling Missing Values</h3>
+
+<p>
+24.9% of transactions had missing values. These were filled using category-level estimates 
+to preserve dataset completeness while maintaining realistic values.
+</p>
+
+<!-- Optional Section -->
+<!--
+<div align="center">
+  <img width="700" src="YOUR_ISSUE_LINK_BEFORE_AFTER_PROFILING" />
+</div>
+
+<p align="center">
+Data quality improvement before and after cleaning
+</p>
+-->
+
+---
+
+<h2>Business Insights</h2>
+
+<h3>Revenue Behavior Over Time</h3>
+
+<div align="center">
+  <img width="700" src="YOUR_ISSUE_LINK_FINTECH_PULSE" />
+</div>
+
+<p align="center">
+Revenue trend showing transaction activity and stability over time
+</p>
 
 <ul>
-<li><strong>Transactions:</strong> 1,000,000+</li>
-<li><strong>Customers:</strong> 94,000+</li>
-<li><strong>Data Size:</strong> 1.1 GB</li>
-<li><strong>Source:</strong> SQLite database</li>
+<li>Revenue follows consistent patterns after cleaning</li>
+<li>Outlier control improves trend reliability</li>
+<li>Recurring transactions create predictable flow</li>
 </ul>
 
 ---
 
-<h2>System Design</h2>
+<h3>Customer Segmentation</h3>
 
-<p>
-A three-layer data structure was implemented to improve data quality step by step.
+<div align="center">
+  <img width="500" src="YOUR_ISSUE_LINK_CREDIT_TIER" />
+</div>
+
+<p align="center">
+Customer distribution across credit tiers
 </p>
-
-<h3>Raw Layer</h3>
 
 <ul>
-<li>Stores data exactly as received</li>
-<li>No transformations applied</li>
-<li>Includes missing values, duplicates, and inconsistencies</li>
+<li>Different customer tiers show varied contribution patterns</li>
+<li>Segmentation enables targeted business strategies</li>
 </ul>
-
-<h3>Cleaned Layer</h3>
-
-<ul>
-<li>Standardizes merchant and category values</li>
-<li>Fills missing transaction amounts using category-based estimates</li>
-<li>Removes duplicate customer records</li>
-<li>Controls extreme values to stabilize analysis</li>
-</ul>
-
-<h3>Reporting Layer</h3>
-
-<ul>
-<li>Structured for analysis and dashboards</li>
-<li>Clear relationships between customers, transactions, and merchants</li>
-<li>Pre-built views to support reporting tools</li>
-</ul>
-
----
-
-<h2>Key Transformations</h2>
-
-<h3>Handling Missing Transaction Values</h3>
-
-<p>
-24.9% of transaction values were missing.
-</p>
-
-<p>
-Instead of removing these records, missing values were filled using the median value 
-of similar transactions within the same category.
-</p>
-
-<p>
-This preserved the dataset while maintaining realistic financial estimates.
-</p>
-
-<p>
-<strong>Result:</strong> Prevented large-scale under-reporting of revenue.
-</p>
-
----
-
-<h3>Resolving Duplicate Customers</h3>
-
-<p>
-Multiple records existed for the same customer with different attributes.
-</p>
-
-<p>
-These were merged into a single record using defined rules, creating a consistent 
-view of each customer.
-</p>
-
-<p>
-<strong>Result:</strong> Improved accuracy in customer analysis and reduced redundant communication.
-</p>
-
----
-
-<h3>Standardizing Merchant Data</h3>
-
-<p>
-Merchant names appeared in multiple formats.
-</p>
-
-<p>
-All variations were converted into a single standardized format using text cleaning 
-and mapping rules.
-</p>
-
-<p>
-<strong>Result:</strong> Enabled accurate measurement of merchant performance.
-</p>
-
----
-
-<h3>Managing Extreme Values</h3>
-
-<p>
-Some transactions had unusually high values that affected averages and trends.
-</p>
-
-<p>
-These were adjusted to reduce their influence while still retaining the data.
-</p>
-
-<p>
-<strong>Result:</strong> More stable and reliable reporting.
-</p>
 
 ---
 
 <h2>Technical Execution</h2>
 
 <ul>
-<li>Data processed using Python and Pandas</li>
-<li>Raw data stored in SQLite</li>
-<li>Final data structured in SQL Server</li>
-<li>Dashboards built using Power BI</li>
+<li>Python and Pandas used for data cleaning and transformation</li>
+<li>SQLite used for raw data storage</li>
+<li>SQL Server used for structured data modeling</li>
+<li>Power BI used for dashboard and visualization</li>
 </ul>
 
 <p>
-During migration, large data volume caused performance issues. 
-This was resolved by processing the data in smaller batches, ensuring stable execution.
+Large data volume required batch processing during migration to ensure stable execution.
 </p>
-
----
-
-<h2>Dashboard</h2>
-
-<div align="center">
-  <img width="900" src="dashboards/screenshots/executive_summary.png" />
-</div>
-
-<p align="center">
-Executive view showing key metrics, trends, and business insights
-</p>
-
----
-
-<h2>Key Insights</h2>
-
-<ul>
-<li>A small number of merchants drive a large share of transactions</li>
-<li>Recurring payments create predictable revenue patterns</li>
-<li>Data quality issues can significantly distort financial reporting</li>
-</ul>
 
 ---
 
 <h2>Limitations</h2>
 
 <ul>
-<li>Dataset is simulated and does not include real-world seasonality</li>
-<li>Pipeline currently runs as batch processing, not real-time</li>
-<li>Some missing fields were filled with placeholder values</li>
+<li>Dataset is simulated and does not include real-world seasonal patterns</li>
+<li>Pipeline runs in batch mode and does not support real-time updates</li>
+<li>Some missing fields were filled using placeholder values</li>
 </ul>
 
 ---
 
 <div align="center">
   <h3>Author</h3>
-  <p><strong>Saswata Ghosh</strong><br>Data Analyst Portfolio Project</p>
+  <p><strong>Saswata Ghosh</strong></p>
 </div>
