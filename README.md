@@ -247,7 +247,7 @@ to ensure stable execution.
 <h2>Limitations</h2>
 
 <ul>
-<li>Synthetic dataset without real-world seasonal behavior</li>
+<li>Synthetic dataset with real-world seasonal behavior</li>
 <li>Pipeline operates in batch mode only</li>
 <li>Some missing fields filled with placeholder values</li>
 </ul>
