@@ -1,5 +1,5 @@
 <div align="center">
- <img width="400" height="112" alt="Image" src="https://github.com/user-attachments/assets/857560f4-3812-431f-b1ae-53a7f2479ecd" />
+ <img width="400" height="112" src="https://github.com/user-attachments/assets/857560f4-3812-431f-b1ae-53a7f2479ecd" />
   <h1>Venture Finance</h1>
   <h3>Designing a Reliable Data System for Financial Decision-Making</h3>
   <p><strong>1M+ Transactions | 94K+ Customers | $3.15B Portfolio | Medallion Data Architecture</strong></p>
@@ -7,65 +7,56 @@
 
 ---
 
-<h2>Project Background</h2>
+## Executive Summary
 
-<p>
-<strong>Venture Finance</strong> is a rapidly scaling financial platform processing over 
-<strong>1 million transactions</strong> across <strong>94,000+ customers</strong>, 
-representing a total managed portfolio of <strong>$3.15 billion</strong>.
-</p>
+This project addresses a critical failure in financial reporting caused by poor data quality in a high-volume transaction system.
 
-<p>
-As the platform scaled, the underlying data systems failed to keep pace. 
-This resulted in a growing layer of data inconsistencies that directly impacted 
-reporting accuracy and business decision-making.
-</p>
+The platform processes over 1 million transactions across 94 thousand customers. However, nearly 25 percent of transaction values were missing, merchant data was inconsistent, and customer records were duplicated. This created a high-risk reporting environment with over 780 million dollars of unreliable financial data.
 
-<p>
-The core issues observed:
-</p>
+A full Medallion data pipeline was designed to restore trust in the data. Cleaning, standardization, and statistical correction transformed the dataset into a reliable analytical system.
 
-<ul>
-<li>Inconsistent merchant naming (Amazon, AMZN, Amazon.com treated as separate entities)</li>
-<li>Duplicate customer records with conflicting attributes</li>
-<li>24.9% missing transaction values ("Ghost Money")</li>
-<li>Extreme outliers distorting financial trends</li>
-</ul>
+Key outcomes:
 
-<p>
-These issues created a situation where financial reporting could not be trusted.
-</p>
+• 780 million dollars of reporting risk eliminated  
+• 5,000 plus duplicate customers unified  
+• Merchant fragmentation removed across 15 plus variations  
+• Stable revenue trends established for decision making  
+
+Post-cleaning analysis revealed strong merchant concentration, category-driven revenue behavior, and clear customer tier dynamics that directly impact financial strategy.
 
 ---
 
-<h2>Dashboard Overview</h2>
+## Project Background
+
+Venture Finance is a rapidly scaling financial platform managing a 3.15 billion dollar portfolio.
+
+As transaction volume increased, the data system failed to maintain consistency. The result was unreliable reporting across revenue, customers, and merchant performance.
+
+Initial audit findings:
+
+• 24.9 percent missing transaction values  
+• 20 percent missing merchant names  
+• 5,000 duplicate customer records  
+• Extreme outliers up to 999,999  
+• Category inconsistencies such as Grocery vs Groceries  
+
+These issues made it impossible to generate accurate business insights.
+
+---
+
+## Dashboard Overview
 
 <div align="center">
   <img width="900" src="https://github.com/user-attachments/assets/cb6390d8-37c2-4fd3-a3bd-a3e0dd540c38" />
 </div>
 
 <p align="center">
-Executive dashboard presenting revenue trends, merchant contribution, and customer insights
+Executive dashboard presenting revenue trends, merchant contribution, and customer behavior
 </p>
 
 ---
 
-<h2>Key Outcomes</h2>
-
-<ul>
-<li><strong>$780M reporting risk eliminated</strong> by resolving missing transaction values</li>
-<li><strong>5,000+ duplicate customers unified</strong> into a single customer view</li>
-<li><strong>15+ merchant variations standardized</strong> into consistent entities</li>
-<li><strong>Stable and reliable revenue tracking enabled</strong></li>
-</ul>
-
----
-
-<h2>Data Architecture — Medallion Pipeline</h2>
-
-<p>
-To solve these issues, a structured three-layer data system was implemented.
-</p>
+## Data Architecture — Medallion Pipeline
 
 <div align="center">
   <img width="700" src="YOUR_ISSUE_LINK_MEDALLION" />
@@ -75,182 +66,301 @@ To solve these issues, a structured three-layer data system was implemented.
 Bronze (raw) → Silver (cleaned) → Gold (reporting)
 </p>
 
-<h3>Bronze Layer</h3>
-<ul>
-<li>Raw data stored without transformation</li>
-<li>Includes missing values, duplicates, and inconsistencies</li>
-<li>Serves as audit and traceability layer</li>
-</ul>
+### Bronze Layer
+• Raw ingestion from source systems  
+• No transformations applied  
+• Full audit and traceability layer  
 
-<h3>Silver Layer</h3>
-<ul>
-<li>Data cleaning and transformation applied</li>
-<li>Merchant normalization</li>
-<li>Missing value handling</li>
-<li>Outlier control</li>
-<li>Category standardization</li>
-</ul>
+### Silver Layer
+• Data cleaning and transformation  
+• Merchant standardization  
+• Missing value imputation  
+• Outlier control  
+• Category normalization  
 
-<h3>Gold Layer</h3>
-<ul>
-<li>Structured for reporting</li>
-<li>Fact and dimension tables</li>
-<li>Optimized for Power BI dashboards</li>
-</ul>
+### Gold Layer
+• Star schema for analytics  
+• Fact and dimension tables  
+• Pre-aggregated SQL views for BI consumption  
 
 ---
 
-<h2>Data Cleaning and Transformation</h2>
+## Data Cleaning and Transformation
 
-<h3>1. Merchant Standardization</h3>
+### 1. Missing Transaction Values (Critical Fix)
 
-<p>
-Merchant data appeared under multiple formats, preventing accurate aggregation.
-</p>
+Problem:
 
-<div align="center">
-  <img width="700" src="YOUR_ISSUE_LINK_MERCHANT" />
-</div>
+25 percent of transaction values were missing, creating a major gap in revenue reporting.
 
-<p align="center">
-Merchant leaderboard after cleaning shows true revenue contribution
-</p>
+Solution:
 
-<p>
-All variations were mapped into unified entities, allowing accurate measurement of merchant performance.
-</p>
+• Applied category-level median imputation  
+• Preserved category-specific spending behavior  
+• Avoided distortion from extreme values  
+
+Impact:
+
+Restored continuity in revenue analysis without introducing statistical bias.
 
 ---
 
-<h3>2. Handling Missing Transaction Values</h3>
+### 2. Merchant Standardization
 
-<p>
-24.9% of transactions had missing values, creating a major gap in financial reporting.
-</p>
+Problem:
 
-<p>
-Instead of removing these records, values were estimated using median values 
-within the same transaction category.
-</p>
+Merchant names appeared in multiple formats, fragmenting revenue.
 
-<p>
-This ensured realistic estimates without introducing bias from extreme values.
-</p>
+Example: Amazon, AMZN, Amazon.com
 
-<!-- Optional -->
-<!--
-<div align="center">
-  <img width="700" src="YOUR_BEFORE_AFTER_LINK" />
-</div>
--->
+Solution:
+
+• SQL-based mapping using CASE and pattern matching  
+• Unified all variations into consistent entities  
+
+Impact:
+
+Enabled accurate merchant-level revenue aggregation.
 
 ---
 
-<h3>3. Customer Deduplication</h3>
+### 3. Customer Deduplication
 
-<p>
-Multiple records existed for the same customer with inconsistent attributes.
-</p>
+Problem:
 
-<p>
-A rule-based approach was used to merge these into a single unified record.
-</p>
+5,000 duplicate customer records with conflicting attributes.
 
-<p>
-This created a consistent and reliable customer view for analysis.
-</p>
+Solution:
 
----
+• Rule-based merging using cust_id  
+• Prioritized latest and most complete records  
 
-<h3>4. Outlier Handling</h3>
+Impact:
 
-<p>
-Extreme transaction values distorted averages and trends.
-</p>
-
-<p>
-These values were adjusted using statistical thresholds to reduce their impact 
-while preserving the dataset.
-</p>
+Created a single, reliable customer view for segmentation and analysis.
 
 ---
 
-<h2>Business Insights</h2>
+### 4. Outlier Handling
 
-<h3>Revenue Trends</h3>
+Problem:
+
+Extreme values up to 999,999 distorted averages and trends.
+
+Solution:
+
+• Winsorization applied with upper cap at realistic thresholds  
+• Distribution-based validation  
+
+Impact:
+
+Stabilized financial trends and improved analytical accuracy.
+
+---
+
+### 5. Handling Missing Merchant Names
+
+Problem:
+
+20 percent merchant names were null.
+
+Solution:
+
+• Replaced with category-based placeholders  
+• Example: Groceries Provider  
+
+Impact:
+
+Improved usability in filters and reporting without data gaps.
+
+---
+
+## Data Quality Improvement — Before vs After
+
+### Overall Data Health
+
+| Metric | Before Cleaning | After Cleaning | Improvement |
+|-------|----------------|---------------|------------|
+| Total Records | 1,000,000 | 1,000,000 | No data loss |
+| Missing Transaction Values | 24.93% | 0% | Fully resolved |
+| Missing Merchant Names | 20.01% | 0% | Fully resolved |
+| Duplicate Customers | 5,000+ | 0 | Fully resolved |
+| Category Inconsistencies | High | 0 | Standardized |
+| Outliers Impact | Severe | Controlled | Stabilized |
+
+---
+
+### Financial Data Integrity
+
+| Metric | Before | After | Impact |
+|------|--------|------|--------|
+| Revenue Reliability | Untrustworthy | Reliable | Decision-ready |
+| Average Transaction Value | Distorted | 2.55K stable | Accurate benchmarking |
+| Median Transaction Value | 2.44K | Preserved | No statistical drift |
+| Outlier Influence | Extreme | Minimized | Clean trend lines |
+
+---
+
+### Customer Data Quality
+
+| Metric | Before | After | Impact |
+|------|--------|------|--------|
+| Unique Customers | 94,728 inconsistent | 94K unified | Single customer view |
+| Duplicate Records | 5,000+ | 0 | Clean segmentation |
+| Customer Profiles | Fragmented | Consistent | Reliable analytics |
+
+---
+
+### Merchant Data Quality
+
+| Metric | Before | After | Impact |
+|------|--------|------|--------|
+| Merchant Variations | 15+ inconsistent labels | Standardized | Accurate aggregation |
+| Null Merchant Names | 20% missing | 0% | Complete reporting |
+| Top Merchant Accuracy | Fragmented | Unified | True revenue contribution |
+
+---
+
+### Category Standardization
+
+| Metric | Before | After | Impact |
+|------|--------|------|--------|
+| Category Labels | Mixed formats | Standardized | Clean grouping |
+| Category Aggregation | Inconsistent | Accurate | Reliable insights |
+
+---
+
+### Key Takeaways
+
+• Data completeness improved to near 100 percent usable  
+• Revenue calculations became decision-grade  
+• Entities fully unified across customers and merchants  
+• Trends stabilized after outlier control  
+
+---
+
+## Business Insights Deep Dive
+
+### Revenue Distribution and Stability
 
 <div align="center">
   <img width="700" src="YOUR_ISSUE_LINK_FINTECH_PULSE" />
 </div>
 
-<p align="center">
-Revenue trend showing transaction activity over time
-</p>
-
-<ul>
-<li>Revenue patterns become stable after cleaning</li>
-<li>Outlier control improves trend clarity</li>
-<li>Recurring transactions drive predictable revenue flow</li>
-</ul>
+• Total revenue stabilized at 3.15 billion  
+• Monthly revenue shows consistent flow  
+• Outlier removal improved clarity  
 
 ---
 
-<h3>Merchant Contribution</h3>
+### Merchant Contribution and Risk
 
-<p>
-After standardization, a small number of merchants drive a large portion of revenue.
-</p>
+<div align="center">
+  <img width="700" src="YOUR_ISSUE_LINK_MERCHANT" />
+</div>
 
-<p>
-This highlights concentration risk and dependency on key partners.
-</p>
+• Amazon contributes ~60 percent of total revenue  
+• Remaining merchants contribute significantly less  
+
+Insight:
+
+High dependency on a single merchant creates concentration risk.
 
 ---
 
-<h3>Customer Segmentation</h3>
+### Category Performance
+
+• Top categories: Groceries, Subscription, Shopping  
+• Essential and recurring categories dominate  
+
+Insight:
+
+Revenue is driven by daily and recurring spend patterns.
+
+---
+
+### Customer Segmentation
 
 <div align="center">
   <img width="500" src="YOUR_ISSUE_LINK_CREDIT_TIER" />
 </div>
 
-<p align="center">
-Customer distribution across credit tiers
-</p>
+• Fair and Poor credit tier drives highest volume  
+• Higher credit tiers contribute lower volume but higher value  
 
-<ul>
-<li>Customer base is segmented across different risk and value tiers</li>
-<li>Each tier contributes differently to revenue</li>
-</ul>
+Insight:
+
+Business is volume-driven with risk exposure to lower credit segments.
 
 ---
 
-<h2>Technical Implementation</h2>
+### Transaction Behavior
 
-<ul>
-<li>Python and Pandas used for data transformation</li>
-<li>SQLite used as raw data source</li>
-<li>SQL Server used for data warehouse</li>
-<li>Power BI used for visualization and dashboards</li>
-</ul>
-
-<p>
-During migration, large data volume caused performance issues.
-</p>
-
-<p>
-This was resolved using batch processing, where data was transferred in chunks 
-to ensure stable execution.
-</p>
+• Average transaction value: 2.55K  
+• Revenue driven by volume, not high ticket size  
 
 ---
 
-<h2>Limitations</h2>
+## Strategic Recommendations
 
-<ul>
-<li>Synthetic dataset with real-world seasonal behavior</li>
-<li>Pipeline operates in batch mode only</li>
-<li>Some missing fields filled with placeholder values</li>
-</ul>
+### 1. Reduce Merchant Dependency
+
+• Diversify beyond Amazon  
+• Expand merchant partnerships  
+
+---
+
+### 2. Monetize High Credit Customers
+
+• Launch premium offerings  
+• Target high-value segments  
+
+---
+
+### 3. Manage Risk in Low Credit Segments
+
+• Introduce credit-based controls  
+• Optimize pricing strategies  
+
+---
+
+### 4. Strengthen Subscription Model
+
+• Expand recurring services  
+• Bundle with shopping categories  
+
+---
+
+## Technical Implementation
+
+• Python and Pandas for transformation  
+• SQLite for initial processing  
+• SQL Server for warehouse  
+• SQLAlchemy for migration  
+• Power BI for dashboards  
+
+### Performance Optimization
+
+• Batch processing for large data  
+• Clustered indexing on fact tables  
+• SQL views as semantic layer  
+
+---
+
+## Validation and Data Quality Checks
+
+• Row count validation across layers  
+• Join integrity checks  
+• Aggregation reconciliation  
+• Random sampling verification  
+
+---
+
+## Limitations
+
+• Synthetic dataset  
+• Batch pipeline only  
+• Imputation introduces assumptions  
 
 ---
 
