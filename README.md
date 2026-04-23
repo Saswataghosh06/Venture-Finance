@@ -24,7 +24,7 @@ Key outcomes:
 
 Post-cleaning analysis revealed strong merchant concentration, category-driven revenue behavior, and clear customer tier dynamics that directly impact financial strategy.
 
-##Dataset: Due to file size constraints, the full 1.1 million record dataset can be downloaded <a href="https://drive.google.com/drive/folders/1RjauOVAP0n1xhZKPxWgiuddRgHZOzJAx?usp=drive_link">HERE.</a>
+Dataset: Due to file size constraints, the full 1.1 million record dataset can be downloaded <a href="https://drive.google.com/drive/folders/1RjauOVAP0n1xhZKPxWgiuddRgHZOzJAx?usp=drive_link">HERE.</a>
 
 ---
 
